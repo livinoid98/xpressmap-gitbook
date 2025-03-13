@@ -1,0 +1,50 @@
+site_name: XpressMap
+docs_dir: 'docs'
+
+theme:
+    name: gitbook
+    features:
+        - content.code.copy
+    language: ko
+    palette:
+        - media: '(prefers-color-scheme: light)'
+          scheme: default
+          primary: custom
+          toggle:
+              icon: material/weather-night
+              name: Switch to dark mode
+        - media: '(prefers-color-scheme: dark)'
+          scheme: slate
+          primary: custom
+          toggle:
+              icon: material/brightness-4
+              name: Switch to light mode
+
+plugins:
+    - i18n:
+          docs_structure: folder
+          languages:
+              - locale: ko
+                name: 한국어
+                build: true
+                default: true
+    - literate-nav:
+          nav_file: nav.md
+
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - tables
+    - pymdownx.highlight:
+          use_pygments: true
+
+nav:
+    - index.md
+# nav:
+#     - Home: index.md
+#     - Category 1:
+#           - Page 1: category1/page1.md
+#           - Page 2: category1/page2.md
+#     - Category 2:
+#           - Page 1: category2/page1.md
