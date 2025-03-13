@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>API 문서 - XpressMap</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">XpressMap</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href=".."></a>
+<li class="header">지도 타일 이미지</li>
+
+<li>
+<a href="../tile_summary/" class="">개요</a>
+</li>
+
+<li>
+<a href="../tile_how_to_use/" class="">사용법</a>
+</li>
+
+<li>
+<a href="../tile_api/" class="">API 문서</a>
+</li>
+
+<li class="header">레포트용 타일 이미지</li>
+
+<li>
+<a href="../report_summary/" class="">개요</a>
+</li>
+
+<li>
+<a href="../report_how_to_use/" class="">사용법</a>
+</li>
+
+<li>
+<a href="./" class="active">API 문서</a>
+</li>
+
+<li class="header">오프라인 지도 타일 이미지</li>
+
+<li>
+<a href="../offline_summary/" class="">개요</a>
+</li>
+
+<li>
+<a href="../offline_how_to_use/" class="">사용법</a>
+</li>
+
+<li>
+<a href="../offline_api/" class="">API 문서</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h2 id="1-bing-map-api">1. Bing-Map 기반 API 목록</h2>
+<hr />
+<h3 id="api">지도 이미지 조회 API</h3>
+<blockquote>
+<p>Bing Map 기반의 지도에서 레포트 이미지를 조회할 때 사용하는 API</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Request</p>
+<div class="highlight"><pre><span></span><code>POST /api/maps/bing-map
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Info</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">타입</th>
+<th style="text-align: left;">설명</th>
+<th style="text-align: left;">유효성 검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">projectSeq</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">primary key</td>
+<td style="text-align: left;">tm_project에 존재</td>
+</tr>
+<tr>
+<td style="text-align: left;">queryType</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">쿼리 타입</td>
+<td style="text-align: left;">tm_query에 존재 (dish_ct_draw_map 등)</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">쿼리 필터 파라미터</td>
+<td style="text-align: left;">tm_query의 request_params 형식과 동일</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;projectSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;queryType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dish_ct_draw_map&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;mdlSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;paraKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Error</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">에러 코드</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">INVALID_PROJECT_SEQ</td>
+<td style="text-align: left;">유효하지 않은 projectSeq</td>
+</tr>
+<tr>
+<td style="text-align: left;">INVALID_QUERY_TYPE</td>
+<td style="text-align: left;">유효하지 않은 queryType</td>
+</tr>
+<tr>
+<td style="text-align: left;">INVALID_FILTER</td>
+<td style="text-align: left;">유효하지 않은 filter 형식</td>
+</tr>
+<tr>
+<td style="text-align: left;">SERVER_ERR</td>
+<td style="text-align: left;">서버 에러</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bad Request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID_PROJECT_SEQ&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="2-api">2. 인빌딩 기반 API 목록</h2>
+<hr />
+<h3 id="api_1">지도 이미지 조회 API</h3>
+<blockquote>
+<p>인빌딩 기반의 지도에서 레포트 이미지를 조회할 때 사용하는 API</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Request</p>
+<div class="highlight"><pre><span></span><code>POST /api/maps/inbuilding
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Info</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">타입</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">projectSeq</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">프로젝트 식별자</td>
+</tr>
+<tr>
+<td style="text-align: left;">queryType</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">쿼리 타입 (inbuild_ss_walk_draw_aml 등)</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">쿼리 필터 파라미터</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;projectSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aga&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;queryType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inbuild_ss_walk_draw_map&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;mdlSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;paraKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Error</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">에러 코드</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">INVALID_PROJECT_SEQ</td>
+<td style="text-align: left;">유효하지 않은 projectSeq</td>
+</tr>
+<tr>
+<td style="text-align: left;">INVALID_QUERY_TYPE</td>
+<td style="text-align: left;">유효하지 않은 queryType</td>
+</tr>
+<tr>
+<td style="text-align: left;">INVALID_FILTER</td>
+<td style="text-align: left;">유효하지 않은 filter 형식</td>
+</tr>
+<tr>
+<td style="text-align: left;">SERVER_ERR</td>
+<td style="text-align: left;">서버 에러</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bad Request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID_PROJECT_SEQ&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="3-api">3. 레전드 API 목록</h2>
+<hr />
+<h3 id="api_2">조회 API</h3>
+<blockquote>
+<p>레전드를 조회하는 API</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Request</p>
+<div class="highlight"><pre><span></span><code>POST /api/maps/{mapType}/legends
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Info</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">타입</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">projectSeq</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">프로젝트 식별자</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">쿼리 필터 파라미터</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;projectSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aga&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;mdlSeq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Error</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">에러 코드</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">INVALID_PROJECT_SEQ</td>
+<td style="text-align: left;">유효하지 않은 projectSeq</td>
+</tr>
+<tr>
+<td style="text-align: left;">INVALID_FILTER</td>
+<td style="text-align: left;">유효하지 않은 filter 형식</td>
+</tr>
+<tr>
+<td style="text-align: left;">SERVER_ERR</td>
+<td style="text-align: left;">서버 에러</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bad Request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID_PROJECT_SEQ&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>
